@@ -75,10 +75,13 @@ Durante su viaje, Alicia cambia de tamaño muchas veces, cuestiona la lógica de
         <p><strong>Tema principal:</strong> Comprender las fracciones como partes de un todo y su utilidad en situaciones cotidianas.</p>',
     ],
 ];
-
-
-// Busca el libro en el array y lo valida.
-$libro_actual = $libros_contenido[$nombre_libro] ?? null;
+// Si no hay libro o el libro no existe en el array, redirige a la lista general de libros
+if (!$nombre_libro || !array_key_exists($nombre_libro, $libros_contenido)) {
+    header("Location: libros.php");
+    exit();
+}
+// Busca el libro en el array
+$libro_actual = $libros_contenido[$nombre_libro];
 ?>
 
 <!DOCTYPE html>
