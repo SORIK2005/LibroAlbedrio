@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['index'])) {
         // Recalcular el nuevo total del carrito
         $nuevo_total = 0;
         foreach ($_SESSION['carrito'] as $item) {
-            $nuevo_total += $item['precio'];
+            $nuevo_total += $item['precio'] * $item['cantidad'];
         }
 
         // Devolver una respuesta JSON con el estado de éxito y el nuevo total
@@ -40,3 +40,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['index'])) {
     ]);
 }
 ?>
+
